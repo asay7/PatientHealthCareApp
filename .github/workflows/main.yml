@@ -1,4 +1,4 @@
-name: word-flow
+name: ModuleTest
 
 on:
   workflow_dispatch:
