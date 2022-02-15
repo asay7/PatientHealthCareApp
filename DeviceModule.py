@@ -20,16 +20,16 @@ class DeviceModule:
          Loads data from an external JSON file into the device module.
         '''
     def ReceiveData(self, file)-> None:
-        status = 0
         jf = open(f'{self.RX}{file}')
         self.jdata = json.load(jf)
-        status = self.CheckUID() #basic user check of data
+        if(self.CheckUID() == 1):#basic user check of data
+            return -1
         logger.info(f'Finished reading {file}.')
         dtp = self.jdata["DeviceType"]
         self.data = self.jdata["MeasurementData"][self.DevType[dtp]]
         
         jf.close()
-        return status
+        return 0
 
         '''
          Sends data to data management module
@@ -56,7 +56,7 @@ class DeviceModule:
 
 def run()-> None:
     dm = DeviceModule("./Test/Data/", "./")
-    dm.ReceiveData("BasicTempData.json")
+    dm.ReceiveData("BadUID.json")
     dm.TransmitData()
 
 if __name__ == "__main__":
