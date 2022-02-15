@@ -1,7 +1,6 @@
 from importlib.resources import path
 import json
 import logging
-import sys
 
 logging.basicConfig(level=logging.INFO, filename="./app.log", filemode='w', format='%(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger("appdata")
@@ -12,26 +11,52 @@ class DeviceModule:
         self.TX = path_out 
         self.RX = path_in
 
+        self.DevType = {1:"Temperature", 2:"Heartrate"}
+        self.UIDs = {"U9193902":("D2017868", "D2017468")} #data base check if user is registered with current device 
+        self.DevIDs = {"D2017868":1, "D2017468":2} #list of device IDs and the type of device they belong to
+        self.jdata = "Empty"
+        self.meas = 0
         '''
          Loads data from an external JSON file into the device module.
         '''
     def ReceiveData(self, file)-> None:
+        status = 0
         jf = open(f'{self.RX}{file}')
-        data = json.load(jf)
+        self.jdata = json.load(jf)
+        status = self.CheckUID() #basic user check of data
         logger.info(f'Finished reading {file}.')
-        return 0
+        dtp = self.jdata["DeviceType"]
+        self.data = self.jdata["MeasurementData"][self.DevType[dtp]]
+        
+        jf.close()
+        return status
 
         '''
          Sends data to data management module
         '''
     def TransmitData(self)-> None:
         with open(f'{self.TX}DM_Message.txt', 'w') as ft:
-            ft.write("Hello There")
+            ft.write(f'{self.DevType[self.jdata["DeviceType"]]} = {self.data}')
         logger.info("Message sent to Data Manager.")
+        ft.close()
         return 0
 
+        '''
+        Does a basic check of the user ID by comparing it to the database. If an ID is detected as unknown, an error is generated
+        '''
+    def CheckUID(self) -> None:
+        user_id = self.jdata["UserID"]
+        device_id = self.jdata["DeviceID"]
+        device_type = self.jdata 
+        if(self.jdata["UserID"] not in self.UIDs):
+            logger.error(f'Unknown user with ID="{self.jdata["UserID"]}')
+            return 1
+        else:
+            return 0
+
 def run()-> None:
-    dm  = DeviceModule("./Test/Data/", "./")
+    dm = DeviceModule("./Test/Data/", "./")
+    dm.ReceiveData("BasicTempData.json")
     dm.TransmitData()
 
 if __name__ == "__main__":
