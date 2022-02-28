@@ -1,0 +1,14 @@
+{
+    "UserID" : "troll",
+    "DeviceID" : "inf",
+    "DeviceType" : -13,
+    "SoftwareVersion" : 0.01,
+    "FirmwareVersion" : 12.04,
+    "HardwareVersion" : -1,
+    "MeasurementData": {
+            "TimeStamp" : "2022-2-14T03:53:15Z",
+            "Temperature" : 121313431.43,
+            "Units" : "HAHA"
+            }
+    }
+    

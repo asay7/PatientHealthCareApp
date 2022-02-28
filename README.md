@@ -32,3 +32,5 @@ The contents of the JSON file always contain the following minumum information
 ## TODO
 - Currently all errors are handled in the log file. Later, the errors will be sent to the error module instead.
 - The output of the data now is just a txt file. This will need to change to be compatable with the database manager module.
+- Will move to Java for the rest of the project. Provides better protection of user data.
+
