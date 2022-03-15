@@ -1,0 +1,14 @@
+{
+    "UserID" : "Uxxxxxx",
+    "DeviceID" : "Dxxxxxx",
+    "DeviceType" : 1,
+    "SoftwareVersion" : 1.01,
+    "FirmwareVersion" : 2.04,
+    "HardwareVersion" : 4,
+    "MeasurementData": {
+            "TimeStamp" :"2022-2-14T03:53:15Z",
+            "MeasType" :"Temperature",
+            "Value": [102.43],
+            "Units" : "C"
+            }
+    }

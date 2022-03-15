@@ -1,1 +1,0 @@
-Heartrate = 77
