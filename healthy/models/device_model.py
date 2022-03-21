@@ -2,7 +2,10 @@ class DeviceModule:
     def __init__(self) -> None:
         self.json_bodylength = 7
         self.json_measlength = 4
-
+        """
+        Dictionary storing the allowed measurement types and value ranges. Ideally this info should be pulled from 
+        the server rather than hardcoded in case of future additional measurement types.
+        """
         self.mvalues = {
             "Temperature": {'device_type': 1, 'units': {'C': {'min': 0, 'max': 40}, 'F': {'min': 32, 'max': 200}}},
             "Heartrate": {'device_type': 2, 'units': {'BPM': {'min': 20, 'max': 200}}},
