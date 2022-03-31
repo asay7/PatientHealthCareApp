@@ -4,6 +4,7 @@ import logging
 import pymongo
 
 app = Flask(__name__, instance_relative_config=False)
+app = application
 logging.basicConfig(filename='app.log', level=logging.DEBUG)
 logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(filename)s: %(lineno)d]')
 
