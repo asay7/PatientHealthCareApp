@@ -1,0 +1,6 @@
+numpy
+pytest==7.0.0
+deepspeech
+pvleopard==1.0.4
+librosa==0.9.1
+python-dotenv==0.19.2
