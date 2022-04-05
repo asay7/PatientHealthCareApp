@@ -4,3 +4,4 @@ python-dotenv==0.19.2
 pymongo==4.0.1
 sphinx==4.0.2
 sphinx_rtd_theme
+pvleopard==1.0.4

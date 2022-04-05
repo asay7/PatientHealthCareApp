@@ -34,8 +34,8 @@ if __name__ == "__main__":
     dotenv_values(path.join(basedir, '.env'))
     audiolist = [
         './data/audio/2830-3980-0043.wav',
-        './data/audio/4507-16021-0012.wav',
-        './data/audio/28455-210777-0068.wav'
+        #'./data/audio/4507-16021-0012.wav',
+        #'./data/audio/28455-210777-0068.wav'
     ]
     speech = speech2txt(audiolist=audiolist)
     for i in speech:
