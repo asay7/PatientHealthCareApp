@@ -10,12 +10,6 @@ def task(sec) -> str:
     return f'slept for {sec}s'
 
 
-def compute(N):
-    for i in range(0, N):
-        res = ((res * N * 1000 * i**2)**3) % 10000
-    return res
-
-
 def thread_exec(payload=[]):
     start = time.perf_counter()
     with cf.ThreadPoolExecutor() as cfex:
